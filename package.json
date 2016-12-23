@@ -1,0 +1,36 @@
+{
+  "name": "fuse-box-plugin-eslint",
+  "version": "0.0.1",
+  "description": "ESLint plugin for fuse-box",
+  "main": "dist/commonjs/index.js",
+  "author": "Suntharesan Mohan <suntharesan.mohan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "pretest": "npm run build && npm run clean:test && tsc -p ./test && cp -r ./test/fixtures ./__tests__/test",
+    "test": "mocha ./__tests__/test",
+    "posttest": "npm run clean:test",
+    "clean": "del dist",
+    "clean:test":"del __tests__ .fusebox"
+  },
+  "dependencies": {
+    "fuse-box": "^1.3.24"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.34",
+    "@types/node": "^6.0.53",
+    "@types/should": "^8.1.30",
+    "cpy-cli": "^1.0.1",
+    "del-cli": "^0.2.1",
+    "eslint": "3.12.2",
+    "lodash": "^4.17.2",
+    "mocha": "^3.2.0",
+    "should": "^11.1.2",
+    "tslint": "^4.2.0",
+    "typescript": "^2.1.4"
+  },
+  "peerDependencies": {
+    "eslint": ">=3.0.0 <4.0.0"
+  }
+}
